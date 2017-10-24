@@ -1,7 +1,22 @@
+function showUserInfo() {
+  VK.api("users.get", {fields: "nickname"}, function(response){
+    const first_name = response.response[0].first_name;
+    const last_name = response.response[0].last_name;
+    userToElement({first_name, last_name});
+  });
+}
+
+function userToElement({last_name, first_name}) {
+  const userInfoBlock = document.getElementsByClassName("user-info")[0];
+  userInfoBlock.innerText = `${last_name} ${first_name}`;
+}
+
+
+
 function showFriends(userId) {
   const friendsBlock = document.getElementById("friends");
   if (friendsBlock.style.display !== "none") {
-    VK.api("friends.get", {user_ids: userId, count: 5, order: "random", fields: "nickname, photo_100"}, function(response){
+    VK.api("friends.get", {count: 5, order: "random", fields: "nickname, photo_100"}, function(response){
       console.log(response);
       const friends = response.response.map(item => {
         return {

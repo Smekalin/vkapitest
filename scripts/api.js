@@ -4,6 +4,7 @@ VK.init({
 VK.Auth.getLoginStatus(function (response) {
   if (response.session) {
     showBlocksWhenAuthorized();
+    showUserInfo();
     showFriends();
   } else {
     showBlocksWhenUnauthorized();
@@ -28,10 +29,9 @@ const button = document.getElementById("login-button");
 button.addEventListener("click", _ => {
   VK.Auth.login(function(response) {
     if (response.session) {
-      userId = response.session.userId;
-      console.log(userId);
       showBlocksWhenAuthorized();
-      showFriends(userId);
+      showUserInfo();
+      showFriends();
     } else {
       showBlocksWhenUnauthorized();
     }
