@@ -1,0 +1,12 @@
+{
+  "author": "Sergey Smekalin",
+  "description": "vk api test",
+  "name": "vktest",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node ./scripts/server.js"
+  },
+  "devDependencies": {
+    "node-static": "^0.7.10"
+  }
+}
